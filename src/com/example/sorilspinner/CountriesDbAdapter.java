@@ -74,7 +74,7 @@ public class CountriesDbAdapter {
   }
  }
 
- public long createCountry(String code, String name, 
+ public long createCountry(String code, String name,
    String continent, String region) {
 
   ContentValues initialValues = new ContentValues();
@@ -98,15 +98,15 @@ public class CountriesDbAdapter {
  public Cursor fetchCountriesByName(String inputText) throws SQLException {
   Log.w(TAG, inputText);
   Cursor mCursor = null;
-  if (inputText == null  ||  inputText.length () == 0)  {
+  if (inputText == null || inputText.length () == 0) {
    mCursor = mDb.query(SQLITE_TABLE, new String[] {KEY_ROWID,
-     KEY_CODE, KEY_NAME, KEY_CONTINENT, KEY_REGION}, 
+     KEY_CODE, KEY_NAME, KEY_CONTINENT, KEY_REGION},
      null, null, null, null, null);
 
   }
   else {
    mCursor = mDb.query(true, SQLITE_TABLE, new String[] {KEY_ROWID,
-     KEY_CODE, KEY_NAME, KEY_CONTINENT, KEY_REGION}, 
+     KEY_CODE, KEY_NAME, KEY_CONTINENT, KEY_REGION},
      KEY_NAME + " like '%" + inputText + "%'", null,
      null, null, null, null);
   }
@@ -120,7 +120,7 @@ public class CountriesDbAdapter {
  public Cursor fetchAllCountries() {
 
   Cursor mCursor = mDb.query(SQLITE_TABLE, new String[] {KEY_ROWID,
-    KEY_CODE, KEY_NAME, KEY_CONTINENT, KEY_REGION}, 
+    KEY_CODE, KEY_NAME, KEY_CONTINENT, KEY_REGION},
     null, null, null, null, null);
 
   if (mCursor != null) {

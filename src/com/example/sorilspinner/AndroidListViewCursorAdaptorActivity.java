@@ -51,19 +51,19 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
   };
 
   // the XML defined views which the data will be bound to
-  int[] to = new int[] { 
+  int[] to = new int[] {
     R.id.code,
     R.id.name,
     R.id.continent,
     R.id.region,
   };
 
-  // create the adapter using the cursor pointing to the desired data 
+  // create the adapter using the cursor pointing to the desired data
   //as well as the layout information
   dataAdapter = new SimpleCursorAdapter(
-    this, R.layout.country_info, 
-    cursor, 
-    columns, 
+    this, R.layout.country_info,
+    cursor,
+    columns,
     to
     );
 
@@ -74,13 +74,13 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
 
   listView.setOnItemClickListener(new OnItemClickListener() {
    @Override
-   public void onItemClick(AdapterView<?> listView, View view, 
+   public void onItemClick(AdapterView<?> listView, View view,
      int position, long id) {
    // Get the cursor, positioned to the corresponding row in the result set
    Cursor cursor = (Cursor) listView.getItemAtPosition(position);
 
    // Get the state's capital from this row in the database.
-   String countryCode = 
+   String countryCode =
     cursor.getString(cursor.getColumnIndexOrThrow("code"));
    Toast.makeText(getApplicationContext(),
      countryCode, Toast.LENGTH_SHORT).show();
@@ -94,11 +94,11 @@ public class AndroidListViewCursorAdaptorActivity extends Activity {
    public void afterTextChanged(Editable s) {
    }
 
-   public void beforeTextChanged(CharSequence s, int start, 
+   public void beforeTextChanged(CharSequence s, int start,
      int count, int after) {
    }
 
-   public void onTextChanged(CharSequence s, int start, 
+   public void onTextChanged(CharSequence s, int start,
      int before, int count) {
     dataAdapter.getFilter().filter(s.toString());
    }
